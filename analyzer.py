@@ -1,7 +1,7 @@
 import cv2
 from deepface import DeepFace
 
-face_cascade = cv2.CascadeClassifier("haarcascade_frontalface_alt.xml")
+face_cascade = cv2.CascadeClassifier(cv2.data.haarcascades + 'haarcascade_frontalface_alt.xml')
 
 def detect_faces(frame):
 
@@ -25,11 +25,8 @@ def analyze_face(frame, face_coords):
         if isinstance(result, list):
             result = result[0]
 
-        print(result)
-
         return result
 
     except Exception as e:
         
-        print("Analysis error:", e)
         return None
