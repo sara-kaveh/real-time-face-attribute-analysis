@@ -2,6 +2,7 @@ import cv2
 from camera import start_camera, get_frame, release_camera
 from analyzer import detect_faces, analyze_face
 from utils import draw_results
+import time
 
 cap = start_camera()
 frame_count = 0
@@ -38,7 +39,13 @@ while True:
 
     cv2.imshow("Face Analysis", frame)
 
-    if cv2.waitKey(1) & 0xFF == ord("q"):
+    key = cv2.waitKey(1) & 0xFF
+
+    if key == ord("q"):
         break
+    elif key == ord("s"):
+        screenshot_name = f"screenshot_{int(time.time())}.png"
+        cv2.imwrite(screenshot_name, frame)
+        print(f"Screenshot saved as {screenshot_name}")
 
 release_camera(cap)
