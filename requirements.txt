@@ -1,0 +1,5 @@
+Python==3.10.9
+deepface==0.0.79
+opencv-python==4.8.1.78
+tensorflow==2.20.1
+numpy==1.23.5
