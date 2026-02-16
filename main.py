@@ -20,7 +20,6 @@ while True:
 
     for i, (x, y, w, h) in enumerate(faces):
 
-        # scale back
         x = int(x*2)
         y = int(y*2)
         w = int(w*2)
@@ -37,7 +36,7 @@ while True:
 
         frame = draw_results(frame, face, result)
 
-    cv2.imshow("Emotion AI", frame)
+    cv2.imshow("Face Analysis", frame)
 
     if cv2.waitKey(1) & 0xFF == ord("q"):
         break
