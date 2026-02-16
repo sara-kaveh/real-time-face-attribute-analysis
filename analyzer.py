@@ -18,9 +18,11 @@ def analyze_face(frame, face_coords):
     if face_img.size == 0:
         return None
 
+    face_img = cv2.resize(face_img, (150, 150))
+
     try:
 
-        result = DeepFace.analyze(face_img, actions=['emotion','age','gender','race'], enforce_detection=False, silent=True)
+        result = DeepFace.analyze(face_img, actions=['emotion','age','gender','race'], enforce_detection=False, silent=True, detector_backend='opencv')
 
         if isinstance(result, list):
             result = result[0]
@@ -28,5 +30,5 @@ def analyze_face(frame, face_coords):
         return result
 
     except Exception as e:
-        
+
         return None
